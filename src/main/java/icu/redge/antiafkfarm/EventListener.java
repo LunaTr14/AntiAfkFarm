@@ -29,26 +29,10 @@ public class EventListener implements Listener {
         boolean isEntityInList = lowerCaseEntitySet.contains(entityName);
 
         boolean isPlayerKilled = e.getEntity().getKiller() instanceof org.bukkit.entity.Player;
-
-        if(isBlackListMode) {
-            //System.out.println("AntiAfkFarm TESTING! isBlackListMode");
-            if(isEntityInList) {
-                //System.out.println("AntiAfkFarm TESTING! isEntityInList");
-                if(isPlayerKilled) {
-                    //System.out.println("AntiAfkFarm TESTING! isPlayerkilled");
-                }
-                else {
-                    //System.out.println("AntiAfkFarm TESTING! Not killed by player!");
-                    e.setDroppedExp(0);
-                    e.getDrops().clear();
-                }
-            }
-            else {
-                //System.out.println("Entity not in list!");
-            }
-        }
-        else {
-            //System.out.println("Blacklist mode is disabled!");
-        }
+        if (!isBlackListMode) return;
+        if (!isEntityInList) return;
+        if (!isPlayerKilled) return;
+        e.setDroppedExp(0);
+        e.getDrops().clear();
     }
 }
