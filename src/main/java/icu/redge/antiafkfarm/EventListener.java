@@ -23,7 +23,6 @@ public class EventListener implements Listener {
         }
 
         boolean isBlackListMode = config.getBoolean("isBlackList", true);
-        String value = e.getEntity().toString().toLowerCase();
 
         String entityName = e.getEntity().getType().name().toLowerCase();
         boolean isEntityInList = lowerCaseEntitySet.contains(entityName);
